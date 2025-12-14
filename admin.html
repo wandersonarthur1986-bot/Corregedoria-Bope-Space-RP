@@ -16,6 +16,7 @@
   <p id="msg"></p>
 
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
   <script>
     const supabaseUrl = "https://zujcyvrswxqadtmzmpcs.supabase.co";
     const supabaseKey = "sb_publishable_ck2MoohLT5_CWZakbeG8yw_TBRjMPcT";
@@ -27,8 +28,8 @@
       const password = document.getElementById("senha").value;
 
       const { data, error } = await supabase.auth.signInWithPassword({
-        email: email,
-        password: password
+        email,
+        password
       });
 
       if (error) {
@@ -41,4 +42,3 @@
 
 </body>
 </html>
-
