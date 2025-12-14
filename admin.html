@@ -1,1 +1,44 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Login Administrativo - Corregedoria BOPE</title>
+</head>
+<body>
+
+  <h2>Área Administrativa – Corregedoria BOPE</h2>
+
+  <input id="email" type="email" placeholder="E-mail"><br><br>
+  <input id="senha" type="password" placeholder="Senha"><br><br>
+
+  <button onclick="login()">Entrar</button>
+
+  <p id="msg"></p>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script>
+    const supabaseUrl = "https://zujcyvrswxqadtmzmpcs.supabase.co";
+    const supabaseKey = "sb_publishable_ck2MoohLT5_CWZakbeG8yw_TBRjMPcT";
+
+    const supabase = supabase.createClient(supabaseUrl, supabaseKey);
+
+    async function login() {
+      const email = document.getElementById("email").value;
+      const password = document.getElementById("senha").value;
+
+      const { data, error } = await supabase.auth.signInWithPassword({
+        email: email,
+        password: password
+      });
+
+      if (error) {
+        document.getElementById("msg").innerText = "Acesso negado.";
+      } else {
+        document.getElementById("msg").innerText = "Login realizado com sucesso.";
+      }
+    }
+  </script>
+
+</body>
+</html>
 
